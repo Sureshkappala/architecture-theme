@@ -5,6 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  scroll-behavior: smooth;
 }
 
 code {
@@ -12,38 +14,70 @@ code {
     monospace;
 }
 
+/* SECTION ANIMATION */
 .about,
 .services,
 .projects,
 .team,
 .testimonials,
-.contact-section{
-  padding:80px 20px;
-  text-align:center;
+.contact-section {
+  padding: 80px 20px;
+  text-align: center;
+
+  animation: fadeUp 1s ease-in-out;
 }
 
+/* FLEX BOX SECTIONS */
 .service-box,
 .project-box,
 .team-box,
-.stats{
-  display:flex;
-  gap:20px;
-  justify-content:center;
-  flex-wrap:wrap;
-  margin-top:30px;
+.stats {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 30px;
 }
 
+/* CARD DESIGN + ANIMATION */
 .card,
-.stat-card{
-  background:#f5f5f5;
-  padding:30px;
-  width:250px;
-  border-radius:10px;
+.stat-card {
+  background: #f5f5f5;
+  padding: 30px;
+  width: 250px;
+  border-radius: 10px;
 
-  transition:0.5s;
+  transition: all 0.4s ease;
+  opacity: 0;
+  animation: fadeIn 1s ease forwards;
 }
 
+/* HOVER EFFECT */
 .card:hover,
-.stat-card:hover{
-  transform:translateY(-10px);
+.stat-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+/* KEYFRAME ANIMATION */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

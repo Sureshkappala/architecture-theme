@@ -1,46 +1,61 @@
 import { Link } from "react-router-dom";
 
 function Navbar() {
+  const username = localStorage.getItem("username");
+
+  const handleLogout = () => {
+    localStorage.removeItem("username");
+    window.location.reload();
+  };
+
   return (
-    <nav>
+    <nav
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        padding: "15px",
+        background: "#111",
+        color: "white",
+        position: "fixed",
+        top: 0,
+        width: "100%",
+        zIndex: 1000,
+      }}
+    >
+      {/* LOGO */}
+      <h2>ArchDesign</h2>
 
-      <h2>Architecture Theme</h2>
+      {/* LINKS */}
+      <div style={{ display: "flex", gap: "20px" }}>
+        <Link to="/" style={{ color: "white" }}>Home</Link>
+        <Link to="/services" style={{ color: "white" }}>Services</Link>
+        <Link to="/projects" style={{ color: "white" }}>Projects</Link>
+        <Link to="/contact" style={{ color: "white" }}>Contact</Link>
+        <Link to="/login" style={{ color: "white" }}>Login</Link>
+      </div>
 
-      <ul>
+      {/* USER WELCOME + LOGOUT */}
+      <div>
+        {username ? (
+          <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
+            <span>Hi, {username} 👋</span>
 
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-
-        <li>
-          <Link to="/about">About</Link>
-        </li>
-
-        <li>
-          <Link to="/services">Services</Link>
-        </li>
-
-        <li>
-          <Link to="/projects">Projects</Link>
-        </li>
-
-        <li>
-          <Link to="/contact">Contact</Link>
-        </li>
-
-      </ul>
-      <nav style={{
-  display: "flex",
-  justifyContent: "space-between",
-  padding: "15px",
-  background: "#111",
-  color: "white",
-  position: "fixed",
-  top: 0,
-  width: "100%",
-  zIndex: 1000
-}}></nav>
-
+            <button
+              onClick={handleLogout}
+              style={{
+                padding: "5px 10px",
+                cursor: "pointer",
+                border: "none",
+                borderRadius: "4px",
+              }}
+            >
+              Logout
+            </button>
+          </div>
+        ) : (
+          "Guest"
+        )}
+      </div>
     </nav>
   );
 }
