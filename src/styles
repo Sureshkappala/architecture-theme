@@ -1,0 +1,23 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  scroll-behavior: smooth;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  background: #ff9800;
+  color: white;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background: #e68900;
+}
