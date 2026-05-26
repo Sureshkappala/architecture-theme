@@ -1,23 +1,34 @@
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  scroll-behavior: smooth;
-}
+about:{
+display:"flex",
+padding:"80px",
+gap:"50px",
+alignItems:"center"
+},
 
-a {
-  color: white;
-  text-decoration: none;
-}
+left:{
+flex:1
+},
 
-button {
-  padding: 10px 20px;
-  border: none;
-  background: #ff9800;
-  color: white;
-  cursor: pointer;
-  margin-top: 10px;
-}
+right:{
+flex:1
+},
 
-button:hover {
-  background: #e68900;
+heading:{
+fontSize:"42px"
+},
+
+desc:{
+fontSize:"20px",
+lineHeight:"35px"
+},
+
+readBtn:{
+padding:"15px 30px",
+marginTop:"20px",
+cursor:"pointer"
+},
+
+image:{
+width:"100%",
+borderRadius:"20px"
 }

@@ -1,134 +1,348 @@
-import heroImage from "../assets/hero.jpg";
-import service1 from "../assets/service.jpg";
-import service2 from "../assets/service.jpg";
-import service3 from "../assets/service.jpg";
-
-import Navbar from "../components/Navbar";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
-  const username = localStorage.getItem("username");
+  const [username, setUsername] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const user = localStorage.getItem("username");
+    if (user) {
+      setUsername(user);
+    }
+  }, []);
 
   return (
     <div>
 
-      <Navbar />
+      {/* HERO */}
 
-      {/* HERO SECTION */}
-      <div
-        style={{
-          height: "100vh",
-          backgroundImage: `url(${heroImage})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          color: "white",
-          textAlign: "center",
-          position: "relative",
-        }}
-      >
-        {/* DARK OVERLAY */}
-        <div
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            background: "rgba(0,0,0,0.5)",
-          }}
-        ></div>
+      <section style={styles.hero}>
+        <div style={styles.overlay}>
 
-        {/* HERO CONTENT */}
-        <div style={{ position: "relative" }}>
-          <h2 style={{ color: "white" }}>
-            {username
-              ? `Welcome, ${username} 👋`
-              : "Welcome to Architecture Studio"}
+          <h3 style={styles.welcome}>
+            Welcome {username || "Guest"}
+          </h3>
+
+          <h1 style={styles.title}>
+            BUILDING THE FUTURE OF ARCHITECTURE
+          </h1>
+
+          <p style={styles.text}>
+            Creating modern spaces with innovation,
+            beauty and sustainable design.
+          </p>
+
+          <button
+style={styles.button}
+onClick={() => navigate("/projects-page")}
+>
+Explore Projects
+</button>
+
+        </div>
+      </section>
+
+      {/* ABOUT */}
+
+      <section style={styles.about}>
+
+        <div style={styles.left}>
+
+          <h2 style={styles.heading}>
+            About Stackly Architecture
           </h2>
 
-          <h1>Modern Architecture Designs</h1>
+          <p style={styles.desc}>
+            We create residential and commercial
+            spaces with modern planning and
+            premium architectural experiences.
+          </p>
 
-          <p>We build elegant and sustainable buildings</p>
-
-          <button>Explore</button>
+<button
+style={styles.readBtn}
+onClick={() => navigate("/about-more")}
+>
+Read More
+</button>
         </div>
-      </div>
 
-      {/* ABOUT SECTION */}
-      <section className="about">
-        <h2>About Us</h2>
+        <div style={styles.right}>
+
+          <img
+            src="https://images.unsplash.com/photo-1503387762-592deb58ef4e"
+            alt="architecture"
+            style={styles.image}
+          />
+
+        </div>
+
+      </section>
+
+      {/* SERVICES */}
+
+      <section style={styles.section}>
+
+        <h1 style={styles.sectionTitle}>
+          Our Services
+        </h1>
+
+        <div style={styles.grid}>
+
+          <div style={styles.card}>
+            <h2>Architecture Design</h2>
+            <p>Modern building planning.</p>
+          </div>
+
+          <div style={styles.card}>
+            <h2>Interior Design</h2>
+            <p>Premium interior spaces.</p>
+          </div>
+
+          <div style={styles.card}>
+            <h2>Project Management</h2>
+            <p>Professional delivery.</p>
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* PROJECTS */}
+
+      <section style={styles.section}>
+
+        <h1 style={styles.sectionTitle}>
+          Featured Projects
+        </h1>
+
+        <div style={styles.grid}>
+
+          <div style={styles.darkCard}>
+            <h2>Luxury Villa</h2>
+            <p>Elegant residential project.</p>
+          </div>
+
+          <div style={styles.darkCard}>
+            <h2>Corporate Tower</h2>
+            <p>Commercial architecture.</p>
+          </div>
+
+          <div style={styles.darkCard}>
+            <h2>Smart Interior</h2>
+            <p>Modern interior solutions.</p>
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* STATS */}
+
+      <section style={styles.stats}>
+
+        <div>
+          <h1>250+</h1>
+          <p>Projects</p>
+        </div>
+
+        <div>
+          <h1>80+</h1>
+          <p>Clients</p>
+        </div>
+
+        <div>
+          <h1>12+</h1>
+          <p>Years</p>
+        </div>
+
+        <div>
+          <h1>30+</h1>
+          <p>Awards</p>
+        </div>
+
+      </section>
+
+      {/* TESTIMONIALS */}
+
+      <section style={styles.section}>
+
+        <h1 style={styles.sectionTitle}>
+          Client Testimonials
+        </h1>
+
+        <div style={styles.grid}>
+
+          <div style={styles.card}>
+            <h3>Rahul</h3>
+            <p>Excellent architecture execution.</p>
+          </div>
+
+          <div style={styles.card}>
+            <h3>Priya</h3>
+            <p>Beautiful design experience.</p>
+          </div>
+
+          <div style={styles.card}>
+            <h3>Arjun</h3>
+            <p>Professional and modern team.</p>
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* CONTACT */}
+
+      <section style={styles.contact}>
+
+        <h1>
+          Start Your Dream Project
+        </h1>
+
         <p>
-          We are a modern architecture company focused on innovative building
-          designs, smart interiors, and premium construction solutions.
-        </p>
-      </section>
+          Let's create premium spaces together.
+        </p><button
+style={styles.contactBtn}
+onClick={() => navigate("/contact-now")}
+>
+Contact Us
+</button>
 
-      {/* SERVICES SECTION */}
-      <section className="services">
-        <h2>Our Services</h2>
-
-        <div className="service-box">
-
-          <div className="card">
-            <h3>Interior Design</h3>
-            <p>Luxury interior designs for homes and offices.</p>
-          </div>
-
-          <div className="card">
-            <h3>Urban Planning</h3>
-            <p>Smart city and urban architecture planning.</p>
-          </div>
-
-          <div className="card">
-            <h3>Commercial Design</h3>
-            <p>Professional office and commercial building design.</p>
-          </div>
-
-        </div>
-      </section>
-
-      {/* PROJECTS SECTION */}
-      <div id="projects" style={{ padding: "60px", textAlign: "center" }}>
-        <h2>Our Projects</h2>
-
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            gap: "20px",
-            flexWrap: "wrap",
-            marginTop: "30px",
-          }}
-        >
-          <div className="card">
-            <h3>Modern House</h3>
-            <p>Luxury villa design</p>
-          </div>
-
-          <div className="card">
-            <h3>Office Building</h3>
-            <p>Corporate architecture</p>
-          </div>
-
-          <div className="card">
-            <h3>Interior Design</h3>
-            <p>Modern interior spaces</p>
-          </div>
-        </div>
-      </div>
-
-      {/* CONTACT SECTION */}
-      <section className="contact-section">
-        <h2>Contact Us</h2>
-        <p>Email: architecture@gmail.com</p>
-        <p>Phone: +91 9876543210</p>
-        <button>Contact Now</button>
       </section>
 
     </div>
   );
 }
+
+const styles = {
+
+hero:{
+height:"90vh",
+backgroundImage:
+"url('https://images.unsplash.com/photo-1511818966892-d7d671e672a2')",
+backgroundSize:"cover",
+backgroundPosition:"center"
+},
+
+overlay:{
+height:"100%",
+background:"rgba(0,0,0,.55)",
+display:"flex",
+flexDirection:"column",
+justifyContent:"center",
+alignItems:"center",
+color:"white",
+textAlign:"center"
+},
+
+welcome:{
+fontSize:"30px"
+},
+
+title:{
+fontSize:"60px",
+width:"70%"
+},
+
+text:{
+fontSize:"20px",
+width:"60%"
+},
+
+button:{
+padding:"15px 35px",
+border:"none",
+marginTop:"20px"
+},
+
+about:{
+display:"flex",
+padding:"80px",
+gap:"50px",
+alignItems:"center"
+},
+
+left:{
+flex:1
+},
+
+right:{
+flex:1
+},
+
+heading:{
+fontSize:"42px"
+},
+
+desc:{
+fontSize:"20px",
+lineHeight:"35px"
+},
+
+readBtn:{
+padding:"14px 30px",
+marginTop:"20px"
+},
+
+image:{
+width:"100%",
+borderRadius:"20px"
+},
+
+section:{
+padding:"80px"
+},
+
+sectionTitle:{
+fontSize:"45px",
+textAlign:"center",
+marginBottom:"40px"
+},
+
+grid:{
+display:"flex",
+gap:"30px"
+},
+
+card:{
+flex:1,
+padding:"30px",
+background:"#f5f5f5",
+borderRadius:"20px",
+textAlign:"center"
+},
+
+darkCard:{
+flex:1,
+padding:"40px",
+background:"#111",
+color:"white",
+borderRadius:"20px",
+textAlign:"center"
+},
+
+stats:{
+display:"flex",
+justifyContent:"space-around",
+padding:"80px",
+background:"#111",
+color:"white",
+textAlign:"center"
+},
+
+contact:{
+padding:"100px",
+background:"#111",
+color:"white",
+textAlign:"center"
+},
+
+contactBtn:{
+padding:"15px 40px",
+marginTop:"20px"
+}
+
+};
 
 export default Home;
